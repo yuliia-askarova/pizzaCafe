@@ -9,7 +9,7 @@
     "back": "nodemon server/index.mjs",
     "dev": "webpack serve --mode development --open",
     "build": "webpack --mode production",
-    "deploy": "gh-pages -d bundle"
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
