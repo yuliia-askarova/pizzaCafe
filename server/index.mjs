@@ -5,8 +5,8 @@ import { fileURLToPath } from "url";
 // import mongoose from "mongoose";
 // import Pizza from "./model/Pizza.js";
 // import Drinks from './model/Drinks.js';
-import pizza from "./pizza.js";
-import drinks from "./drinks.js";
+import pizza from "./pizza.mjs";
+import drinks from "./drinks.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
