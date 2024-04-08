@@ -4,33 +4,30 @@ import "./Menu.css";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import "../Header/Header.css";
 import Footer from "../Footer/Footer.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import fetchPizzaAsync from "../../Store/Slices/fetchPizzaSliceAsync.js";
+import fetchDrinksAsync from "../../Store/Slices/fetchDrinksSliceAsync.js";
+import ModalBasket from "../ModalBasket/ModalBasket.jsx";
 
-import { useDispatch } from "react-redux";
-import { getAllPizzas } from "../../Store/Slices/pizzaSliceReducer";
-import { getAllDrinks } from "../../Store/Slices/drinksSliceReducer";
 
 
 const Menu = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const isOpen = useSelector(state => state.modalBasket.isOpen)
+
+
   useEffect(()=> {
     const init = async() => {
-      const res = await fetch ('http://127.0.0.1:5000/pizza');
-      const data = await res.json();
-      dispatch(getAllPizzas(data))
+    
+      dispatch(fetchPizzaAsync())
+      dispatch(fetchDrinksAsync())
     }
     init()
   }, [dispatch])
 
-  useEffect(()=> {
-    const init = async() => {
-      const res = await fetch ('http://127.0.0.1:5000/drinks');
-      const data = await res.json();
-      dispatch(getAllDrinks(data))
-    }
-    init()
-  }, [dispatch])
+
 
   useEffect(() => {
     navigate("./pizzas"); 
@@ -63,6 +60,7 @@ const Menu = () => {
       </div>
 
       <Footer />
+      <ModalBasket isOpen = {isOpen}/> 
     </>
   );
 };

@@ -7,25 +7,22 @@ import Modal from "./Modal.jsx";
 const Pizzas = () => {
   const [showModal, setShowModal] = useState(false);
 
- const [id, setId] = useState('');
-  
-
-
+  const [id, setId] = useState("");
 
   const handleShowModal = (pizza) => {
-    setId (pizza._id)
-   
+    setId(pizza._id);
+
     setShowModal(true);
   };
 
   const handleCloseModal = () => setShowModal(false);
-  const pizzas = useSelector((state) => state.pizza);
+  const pizzas = useSelector((state) => state.pizza.pizza) || [];
 
   return (
     <div className="pizza-list">
       <ul>
-        {pizzas.map((item, index) => (
-          <li key={index}>
+        {pizzas.length && pizzas.map((item) => (
+          <li key={item._id}>
             <div className="pizza-image">
               <img src={item.imageUrl} alt="" />
             </div>
@@ -34,12 +31,11 @@ const Pizzas = () => {
             <div className="pizza-ingredients">{item.ingredients}</div>
 
             <div className="pizza-details">
-              <div className="pizza-price"> € {item.price[0]}.00</div>
+              <div className="pizza-price"> € {item?.price[0]}.00</div>
 
               <button
                 className="pizza-button"
                 onClick={() => handleShowModal(item)}
-
               >
                 +
               </button>
@@ -47,11 +43,8 @@ const Pizzas = () => {
               <Modal
                 show={showModal}
                 handleClose={handleCloseModal}
-                id = {id}
-              
-              >
-
-              </Modal>
+                id={id}
+              />
             </div>
           </li>
         ))}

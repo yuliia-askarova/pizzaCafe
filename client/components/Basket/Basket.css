@@ -1,0 +1,10 @@
+.logo-basket {
+    position: relative;
+}
+
+.logo-basket p {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+}

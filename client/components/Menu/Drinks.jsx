@@ -5,13 +5,13 @@ import Pic2 from "../../assets/coffee1.png";
 import {useSelector} from 'react-redux';
 
 const Drinks = () => {
-  const drinks = useSelector(state => state.drinks);
+  const drinks = useSelector(state => state.drinks.drinks) || [];
   console.log(drinks);
   return (
     <div className="pizza-list">
       <ul>
-        {drinks.map((item, index) => (
-          <li key={index}>
+        {drinks.map((item) => (
+          <li key={item._id}>
             <div className="pizza-image">
               <img src={item.img} alt="" />
             </div>
