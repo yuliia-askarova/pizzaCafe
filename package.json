@@ -9,9 +9,9 @@
     "watch:client": "webpack --watch",
     "watch:server": "nodemon server/index.mjs",
     "serve": "webpack serve --env mode=development",
-    "build": "npm install -D webpack-cli && npx webpack",
+    "build": "webpack",
     "build:prod": "webpack -- --env mode=production",
-    "start": "node server/index.mjs"
+    "start": "npm-run-all --parallel watch:client watch:server"
 
 
   },
