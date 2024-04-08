@@ -2,9 +2,11 @@ import fastify from "fastify";
 import fastifyStatic from '@fastify/static';
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
-import mongoose from "mongoose";
-import Pizza from "./model/Pizza.js";
-import Drinks from './model/Drinks.js';
+// import mongoose from "mongoose";
+// import Pizza from "./model/Pizza.js";
+// import Drinks from './model/Drinks.js';
+import pizza from "./pizza.js";
+import drinks from "./drinks.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -22,23 +24,23 @@ const port = process.env.PORT || 9000;
 const host = process.env.HOST || '127.0.0.1';
 
 
-mongoose
-  .connect(
-    process.env.URI || 
-    "mongodb+srv://lastsong428:fCrVC6eanYNHSzSi@cluster0.keibgqn.mongodb.net/"
+// mongoose
+//   .connect(
+//     process.env.URI || 
+//     "mongodb+srv://lastsong428:fCrVC6eanYNHSzSi@cluster0.keibgqn.mongodb.net/"
 
-  )
-  .then(() => {
-    console.log("DB connected");
-  })
-  .catch((err) => {
-    console.log("error:", err);
-  });
+//   )
+//   .then(() => {
+//     console.log("DB connected");
+//   })
+//   .catch((err) => {
+//     console.log("error:", err);
+//   });
 
 server.get("/pizza", async (request, reply) => {
-  console.log(111);
+
   try {
-    const pizza = await Pizza.find();
+    // const pizza = await Pizza.find();
     return reply.send(pizza);
   } catch (error) {
     reply.status(500).send({ error: "Database error" });
@@ -47,7 +49,7 @@ server.get("/pizza", async (request, reply) => {
 
 server.get("/drinks", async (request, reply) => {
   try {
-    const drinks = await Drinks.find();
+    // const drinks = await Drinks.find();
     return reply.send(drinks);
   } catch (error) {
     reply.status(500).send({ error: "Database error" });
