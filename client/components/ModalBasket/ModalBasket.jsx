@@ -1,17 +1,19 @@
 import React from "react";
 import "./ModalBasket.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setModalBasketOpen, setModalOrderOpen } from "../../Store/Slices/modalSlicer";
 
 const ModalBasket = ({ isOpen }) => {
   const products = useSelector((state) => Object.values(state.basket));
-  // console.log(products);
+  const dispatch = useDispatch();
+  
   return (
     <>
       {isOpen && (
         <div className="modal-basket">
           <ul>
             {products.map((item) => (
-              <li key = {item._id}>
+              <li key = {`order-${item._id}`}>
                 <img src={item.imageUrl} alt="" />
                 <p>{item.name}</p>
                 <div>
@@ -23,6 +25,11 @@ const ModalBasket = ({ isOpen }) => {
               </li>
             ))}
           </ul>
+          <button onClick ={()=> {
+            console.log(1111);
+            dispatch(setModalBasketOpen())
+            dispatch(setModalOrderOpen())
+          }}>Order</button>
         </div>
       )}
     </>

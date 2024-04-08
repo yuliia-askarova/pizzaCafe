@@ -22,7 +22,7 @@ const Pizzas = () => {
     <div className="pizza-list">
       <ul>
         {pizzas.length && pizzas.map((item) => (
-          <li key={item._id}>
+          <li key={`pizza-${item._id}`}>
             <div className="pizza-image">
               <img src={item.imageUrl} alt="" />
             </div>

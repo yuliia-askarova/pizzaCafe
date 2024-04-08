@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import fetchPizzaAsync from "../../Store/Slices/fetchPizzaSliceAsync.js";
 import fetchDrinksAsync from "../../Store/Slices/fetchDrinksSliceAsync.js";
 import ModalBasket from "../ModalBasket/ModalBasket.jsx";
+import OrderModal from "../OrderModal/OrderModal.jsx";
 
 
 
@@ -15,7 +16,8 @@ const Menu = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const isOpen = useSelector(state => state.modalBasket.isOpen)
+  const isOpen = useSelector(state => state.modal.isBasketOpen);
+  const isOrderOpen = useSelector(state => state.modal.isOrderOpen);
 
 
   useEffect(()=> {
@@ -61,6 +63,7 @@ const Menu = () => {
 
       <Footer />
       <ModalBasket isOpen = {isOpen}/> 
+      <OrderModal isOpen = {isOrderOpen}/>
     </>
   );
 };

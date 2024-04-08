@@ -2,7 +2,7 @@ import React from 'react';
 import logoBasket from '../../assets/basket.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import './Basket.css';
-import { setOpen } from '../../Store/Slices/modalBasketSlicer';
+import { setModalBasketOpen } from '../../Store/Slices/modalSlicer';
 
 
 function Basket() {
@@ -11,7 +11,7 @@ function Basket() {
   const dispatch = useDispatch();
 
   return (
-    <div className = 'logo-basket' onClick={()=> dispatch(setOpen()) }>
+    <div className = 'logo-basket' onClick={()=> dispatch(setModalBasketOpen()) }>
         <img src={logoBasket} alt="" style={{ width: '35px', height: '35px' }} />
         <p>{quantity}</p>
     </div>

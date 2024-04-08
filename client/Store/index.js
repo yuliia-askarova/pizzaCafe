@@ -3,7 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import pizzaSliceReducer from "./Slices/pizzaSliceReducer";
 import drinksSliceReducer from "./Slices/drinksSliceReducer";
 import basketSliceReducer from "./Slices/basketSliceReducer";
-import modalBasketSlicer from "./Slices/modalBasketSlicer";
+import modalSlicer from "./Slices/modalSlicer";
 
 
 const store = configureStore({
@@ -11,7 +11,7 @@ const store = configureStore({
     pizza: pizzaSliceReducer,
     drinks: drinksSliceReducer,
     basket: basketSliceReducer,
-    modalBasket: modalBasketSlicer,
+    modal: modalSlicer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
