@@ -2,15 +2,15 @@
   "name": "pizzaCafe",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/index.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch:client": "webpack --watch",
     "watch:server": "nodemon server/index.mjs",
     "serve": "webpack serve --env mode=development",
-    "build": "webpack",
+    "build": "npm install -D webpack-cli && npx webpack",
     "build:prod": "webpack -- --env mode=production",
-    "start": "npm-run-all --parallel watch:client watch:server"
+    "start": "node server/index.mjs"
 
 
   },
