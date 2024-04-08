@@ -10,7 +10,7 @@
     "serve": "webpack serve --env mode=development",
     "build": "npm install -D webpack-cli && npx webpack",
     "build:prod": "webpack -- --env mode=production",
-    "start": "node server/index.mjs"
+    "start": "npm install -D webpack-cli && npx webpack && node server/index.mjs"
 
 
   },
