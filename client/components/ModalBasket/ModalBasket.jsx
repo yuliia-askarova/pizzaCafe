@@ -6,6 +6,9 @@ import { setModalBasketOpen, setModalOrderOpen } from "../../Store/Slices/modalS
 const ModalBasket = ({ isOpen }) => {
   const products = useSelector((state) => Object.values(state.basket));
   const dispatch = useDispatch();
+  const amount = products.reduce((acc, cur) => {
+    console.log(cur);
+  }, {})
   
   return (
     <>
@@ -25,8 +28,10 @@ const ModalBasket = ({ isOpen }) => {
               </li>
             ))}
           </ul>
+
+
           <button onClick ={()=> {
-            console.log(1111);
+         
             dispatch(setModalBasketOpen())
             dispatch(setModalOrderOpen())
           }}>Order</button>
