@@ -21,9 +21,12 @@ server.setNotFoundHandler((_, relply) => {
 const port = process.env.PORT || 9000;
 const host = process.env.HOST || '127.0.0.1';
 
+
 mongoose
   .connect(
+    process.env.URI || 
     "mongodb+srv://lastsong428:fCrVC6eanYNHSzSi@cluster0.keibgqn.mongodb.net/"
+
   )
   .then(() => {
     console.log("DB connected");
